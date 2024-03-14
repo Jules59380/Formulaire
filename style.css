@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #8a2be2, #4b0082); /* Dégradé de violet en diagonale */
+}
+
+.container {
+    width: 80%; /* Largeur du conteneur */
+    max-width: 600px; /* Largeur maximale du conteneur */
+    margin: 50px auto; /* Centre le conteneur horizontalement avec un espace de 50px en haut et en bas */
+    background-color: rgba(255, 255, 255, 0.8); /* Couleur de fond du conteneur avec transparence */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+form {
+    /* Styles pour le formulaire */
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+form textarea {
+    resize: none;
+}
+
+form button {
+    background-color: #007bff; /* Couleur du bouton */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3; /* Couleur du bouton au survol */
+}
