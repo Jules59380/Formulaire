@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(form);
 
         // URL de destination
-        const url = 'https://n8n.oriatec.fr/webhook/cph-versionning';
+        const url = 'https://n8n.oriatec.fr/webhook/cplr-versionning';
 
         // Création de l'objet XMLHttpRequest pour la requête AJAX
         const xhr = new XMLHttpRequest();
