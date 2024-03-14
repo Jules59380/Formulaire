@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Création d'un objet FormData pour collecter les données du formulaire
         const formData = new FormData(form);
 
-        // URL de destination où vous souhaitez envoyer les données
+        // URL de destination
         const url = 'https://n8n.oriatec.fr/webhook/cph-versionning';
 
         // Création de l'objet XMLHttpRequest pour la requête AJAX
@@ -32,7 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         };
 
+        // Conversion des données du formulaire en objet JSON
+        const formDataJson = {};
+        formData.forEach((value, key) => { formDataJson[key] = value });
+
         // Envoi des données du formulaire au format JSON
-        xhr.send(JSON.stringify(Object.fromEntries(formData)));
+        xhr.send(JSON.stringify(formDataJson));
     });
 });
