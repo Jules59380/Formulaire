@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(form);
 
         // URL de destination
-        const url = 'https://n8n.oriatec.fr/webhook/cplr-versionning';
+        const url = 'https://hook.eu2.make.com/n9y7ryyf840yrfb8hed4g5k1wrns1wn6'
 
         // Création de l'objet XMLHttpRequest pour la requête AJAX
         const xhr = new XMLHttpRequest();
