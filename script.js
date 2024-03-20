@@ -2,24 +2,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Sélection du formulaire
     const form = document.querySelector('form');
 
-    // Fonction pour afficher la popup de confirmation
-    function afficherPopupConfirmation() {
-        // Création de la popup
-        var popup = document.createElement("div");
-        popup.className = "popup-confirmation";
-        popup.innerHTML = "Votre demande a été envoyée avec succès.";
-
-        // Ajout de la popup au corps du document
-        document.body.appendChild(popup);
-
-        // Fermer la popup après un délai
-        setTimeout(function() {
-            document.body.removeChild(popup);
-        }, 3000); // 3000 millisecondes = 3 secondes (ajustez selon vos préférences)
+    // Fonction pour afficher une alerte de confirmation
+    function afficherAlerteConfirmation() {
+        alert("Votre demande a été envoyée avec succès.");
     }
 
     // Écouteur d'événement pour la soumission du formulaire
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', async function (event) {
         // Empêcher le comportement par défaut du formulaire
         event.preventDefault();
 
@@ -27,38 +16,29 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(form);
 
         // URL de destination
-        const url = 'https://hook.eu2.make.com/n9y7ryyf840yrfb8hed4g5k1wrns1wn6'
+        const url = 'https://hook.eu2.make.com/n9y7ryyf840yrfb8hed4g5k1wrns1wn6';
 
-        // Création de l'objet XMLHttpRequest pour la requête AJAX
-        const xhr = new XMLHttpRequest();
+        try {
+            // Envoi des données du formulaire au serveur
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(Object.fromEntries(formData))
+            });
 
-        // Configuration de la requête
-        xhr.open('POST', url);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-
-        // Gestionnaire d'événement pour la réponse de la requête
-        xhr.onload = function () {
-            if (xhr.status === 202) {
+            if (response.ok) {
                 // Les données ont été acceptées
-                console.log(xhr.responseText);
-                // Afficher la popup de confirmation
-                afficherPopupConfirmation();
+                afficherAlerteConfirmation();
             } else {
-                // Il y a eu une erreur ou la réponse n'est pas celle attendue
-                console.error('Erreur lors de la validation de la demande.');
+                // Il y a eu une erreur
+                throw new Error('Erreur lors de la validation de la demande.');
             }
-        };
-
-        // Gestionnaire d'événement pour les erreurs de la requête
-        xhr.onerror = function () {
-            console.error('Erreur lors de la soumission du formulaire.');
-        };
-
-        // Conversion des données du formulaire en objet JSON
-        const formDataJson = {};
-        formData.forEach((value, key) => { formDataJson[key] = value });
-
-        // Envoi des données du formulaire au format JSON
-        xhr.send(JSON.stringify(formDataJson));
+        } catch (error) {
+            // Afficher l'erreur dans la console et une alerte
+            console.error(error.message);
+            alert("Une erreur s'est produite lors de l'envoi de la demande. Veuillez réessayer plus tard.");
+        }
     });
 });
