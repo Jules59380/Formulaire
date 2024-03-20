@@ -61,7 +61,7 @@ form button:hover {
     background-color: #0056b3; /* Couleur du bouton au survol */
 }
 
-.popup-validation {
+.popup-confirmation {
     position: fixed;
     top: 50%;
     left: 50%;
