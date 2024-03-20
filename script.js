@@ -2,6 +2,22 @@ document.addEventListener('DOMContentLoaded', function () {
     // Sélection du formulaire
     const form = document.querySelector('form');
 
+    // Fonction pour afficher la popup de validation
+    function afficherPopupValidation() {
+        // Création de la popup
+        var popup = document.createElement("div");
+        popup.className = "popup-validation";
+        popup.innerHTML = "Votre demande a été envoyée avec succès.";
+
+        // Ajout de la popup au corps du document
+        document.body.appendChild(popup);
+
+        // Fermer la popup après un délai
+        setTimeout(function() {
+            document.body.removeChild(popup);
+        }, 3000); // 3000 millisecondes = 3 secondes (ajustez selon vos préférences)
+    }
+
     // Écouteur d'événement pour la soumission du formulaire
     form.addEventListener('submit', function (event) {
         // Empêcher le comportement par défaut du formulaire
@@ -25,7 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (xhr.status === 200) {
                 // Le formulaire a été soumis avec succès
                 console.log(xhr.responseText);
-                // Vous pouvez ajouter ici un code pour gérer la réponse, par exemple afficher un message de succès
+                // Afficher la popup de validation
+                afficherPopupValidation();
             } else {
                 // Il y a eu une erreur lors de la soumission du formulaire
                 console.error('Erreur lors de la soumission du formulaire.');
